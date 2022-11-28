@@ -1,0 +1,170 @@
+Write a program to implement a stack and search for an element in the stack.
+#include <iostream>
+#include <ctime>
+using namespace std;
+
+int iterative_linearsearch(int A[], int l, int r, int key)
+{
+    for (int i = l; i <= r; i++)
+    {
+        if (A[i] == key)
+        {
+            return i;
+        }
+    }
+    return -1;
+}
+int main()
+{
+    int a,n;
+    cin>>a;
+    int arr[a];
+    for(int i=0;i<a;i++)
+    {
+        cin>>arr[i];
+    }
+    cin >> n;
+    if(iterative_linearsearch(arr, 0, a-1, n)==-1)
+    {
+        cout<<"Element not found";
+    }
+    else
+    {
+        cout<<"Element found";
+    }
+    return 0;
+}
+
+
+Write a program to reverse a string s using stack.
+#include <iostream>
+#include <stack>
+#include <string>
+using namespace std;
+
+void reverse(string &str)
+{
+
+    stack<int> s;
+
+    for (char ch : str)
+    {
+        s.push(ch);
+    }
+
+    for (int i = 0; i < str.length(); i++)
+    {
+        str[i] = s.top();
+        s.pop();
+    }
+}
+
+int main()
+{
+    string str;
+    getline(cin, str);
+
+    reverse(str);
+    cout << str;
+
+    return 0;
+}
+
+
+Write a program to reverse first k element of a Queue.
+#include<iostream>
+using namespace std;
+
+int main()
+{
+    int n,k;
+    cin>>n;
+    cin>>k;
+    int arr[n];
+    for(int i=0;i<n;i++)
+    {
+        cin>>arr[i];
+    }
+    cout<<"Reversed queue:"<<endl;
+    for(int i=k-1;i>=0;i--)
+    {
+        cout<<arr[i]<<" ";
+    }
+    
+    for(int i=k;i<=n-1;i++)
+    {
+        cout<<arr[i]<<" ";
+    }
+    return 0;
+}
+
+Write a program to delete the top element in a stack and display the stack elements.
+#include<iostream>
+using namespace std;
+
+int main()
+{
+    int a;
+    cin>>a;
+    int arr[a];
+    for(int i=0;i<a;i++)
+    {
+        cin>>arr[i];
+    }
+    cout<<"Deleted element is "<<arr[a-1]<<endl;
+    cout<<"The elements in stack"<<endl;
+    for(int i=a-2;i>=0;i--)
+    {
+        cout<<arr[i]<<endl;
+    }
+    return 0;
+}
+
+Write a program to interleave the first half of the queue with second half.
+#include <bits/stdc++.h>
+using namespace std;
+void interleave(queue<int> &q)
+{
+    queue<int> q1, q2;
+
+    int n = q.size();
+
+    
+    for (int i = 0; i < n / 2; i++) {
+        q1.push(q.front());
+        q.pop();
+    }
+
+    
+    for (int i = 0; i < n / 2; i++) {
+        q2.push(q.front());
+        q.pop();
+    }
+
+    for (int i = 0; i < n/2; i++) {
+        q.push(q1.front());
+        q1.pop();
+        q.push(q2.front());
+        q2.pop();
+    }
+}
+
+
+int main()
+{
+    
+    int x;
+    cin>>x;
+    queue<int> q;
+    for (int i = 1; i <= x; i++)
+        q.push(i); 
+
+    interleave(q);
+
+    
+    int n = q.size();
+    for (int i = 0; i < n; i++) {
+        cout << q.front() << " ";
+        q.pop();
+    }
+}
